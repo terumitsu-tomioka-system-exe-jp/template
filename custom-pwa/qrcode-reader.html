@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>PWAテストアプリ - QRコード読み込み</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="html5-qrcode.min.js"></script>
+  <style>
+    #reader { width: 320px; margin: 2em auto; }
+    #result { color: green; font-weight: bold; margin-top: 1em; }
+  </style>  
+</head>
+<body>
+  <h1>QRコード読み込み</h1>
+  <nav>
+    <a href="home.html">ホーム</a>｜
+    <a href="news.html">お知らせ</a>｜
+    <a href="guide.html">ガイド</a>
+    <a href="list.html">社員一覧</a>
+    <a href="regist.html">新規登録</a>
+    <a href="qrcode.html">QRコード表示</a>
+  </nav>
+
+  <h2>QRコードをカメラで読み取る</h2>
+  <div id="reader"></div>
+  <div id="result"></div>
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      // 結果を画面に表示（アラートも出す）
+      document.getElementById('result').textContent = 'QR内容: ' + decodedText;
+      alert('QRコード内容：' + decodedText);
+      // 1回だけでストップしたい場合、stop()を呼び出し
+      html5QrcodeScanner.clear();
+    }
+
+    // 読み取り用インスタンス作成
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 }, /* verbose= */ false);
+
+    // コールバックを定義して開始
+    html5QrcodeScanner.render(onScanSuccess);
+  </script>
+  
+</body>
+</html>

@@ -6,11 +6,13 @@ const urlsToCache = [
   'list.html',
   'regist.html',
   'qrcode.html',
+  'qrcode-reader.html',
   'manifest.json',
   'icon-192.png',
   'icon-512.png',
   'employee-indexeddb.js',
-  'qrcode.min.js'
+  'qrcode.min.js',
+  'html5-qrcode.min.js'
   // 必要ならCSSや画像も追加
 ];
 
