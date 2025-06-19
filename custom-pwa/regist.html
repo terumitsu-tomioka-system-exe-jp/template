@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>PWAテストアプリ - 新規登録</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="employee-indexeddb.js"></script>
+</head>
+<body>
+  <h1>新規登録</h1>
+  <nav>
+    <a href="home.html">ホーム</a>｜
+    <a href="news.html">お知らせ</a>｜
+    <a href="guide.html">ガイド</a>
+    <a href="list.html">社員一覧</a>
+    <a href="regist.html">新規登録</a>
+  </nav>
+
+  <label>名前: <input type="text" id="regName" required></label><br>
+  <label>年齢: <input type="number" id="regAge" required min="0"></label><br>
+  <label>年収: <input type="number" id="regSalary" required min="0"></label><br>
+  <button type="submit" onclick="registerEmployee(); return false;">登録</button>
+  <button type="button" onclick="window.location.href='list.html'">キャンセル</button>
+
+<script>
+function registerEmployee(){
+  let emp = {
+    name: document.getElementById("regName").value,
+    age: Number(document.getElementById("regAge").value),
+    salary: Number(document.getElementById("regSalary").value),
+  };
+  addEmployee(emp, function() {
+    window.location.href = 'list.html';
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>PWAテストアプリ - 一覧</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="employee-indexeddb.js"></script>
+</head>
+<body>
+  <h1>一覧</h1>
+  <nav>
+    <a href="home.html">ホーム</a>｜
+    <a href="news.html">お知らせ</a>｜
+    <a href="guide.html">ガイド</a>
+    <a href="list.html">社員一覧</a>
+    <a href="regist.html">新規登録</a>
+  </nav>
+
+<table border="1" id="employeeTable">
+  <thead>
+    <tr>
+      <th>名前</th><th>年齢</th><th>年収</th><th>操作</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+
+<script>
+function renderList() {
+  getEmployees(function(list){
+    let tbody = document.querySelector("#employeeTable tbody");
+    tbody.innerHTML = "";
+    list.forEach(emp => {
+      let tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${emp.name}</td>
+        <td>${emp.age}</td>
+        <td>${emp.salary}</td>
+        <td>
+          <button onclick="handleDelete(${emp.id})">削除</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+  });
+}
+function handleDelete(id){
+  if (!confirm("削除しますか？")) return;
+  deleteEmployee(id, renderList);
+}
+window.onload = renderList;
+</script>
+
+</body>
+</html>
