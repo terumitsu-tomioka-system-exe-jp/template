@@ -5,10 +5,12 @@ const urlsToCache = [
   'guide.html',
   'list.html',
   'regist.html',
+  'qrcode.html',
   'manifest.json',
   'icon-192.png',
   'icon-512.png',
-  'employee-indexeddb.js'
+  'employee-indexeddb.js',
+  'qrcode.min.js'
   // 必要ならCSSや画像も追加
 ];
 
