@@ -7,7 +7,8 @@ const urlsToCache = [
   'regist.html',
   'manifest.json',
   'icon-192.png',
-  'icon-512.png'
+  'icon-512.png',
+  'employee-indexeddb.js'
   // 必要ならCSSや画像も追加
 ];
 
